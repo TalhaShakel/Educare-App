@@ -1,5 +1,7 @@
 import 'package:educare/Profile/History.dart';
 import 'package:educare/Profile/paymentmethode.dart';
+import 'package:educare/Services/Models.dart';
+import 'package:educare/Services/Service.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -7,6 +9,7 @@ import '../bottom/Notfications.dart';
 import '../userprofile/profiletutor.dart';
 import 'Historypag1.dart';
 import 'Tutorprofile.dart';
+
 class profile extends StatefulWidget {
   const profile({Key? key}) : super(key: key);
 
@@ -25,17 +28,22 @@ class _profileState extends State<profile> {
             child: Column(
               children: [
                 InkWell(
-                    child: Image.asset("assets/images/img_23.png",height: 50,width: 50),
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>profiletutor()));
-                },
+                  child: Image.asset("assets/images/img_23.png",
+                      height: 50, width: 50),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => profiletutor()));
+                  },
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 20),
-                  child: Text("Mrs.Jonny",style: GoogleFonts.poppins(
-                    fontSize: MediaQuery.of(context).size.width/25,
-                    fontWeight: FontWeight.bold,
-                  )),
+                  child: Text("${ParentsData().fullName}",
+                      style: GoogleFonts.poppins(
+                        fontSize: MediaQuery.of(context).size.width / 25,
+                        fontWeight: FontWeight.bold,
+                      )),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 5),
@@ -47,13 +55,21 @@ class _profileState extends State<profile> {
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => tutorprofile(),),
+                              MaterialPageRoute(
+                                builder: (context) => tutorprofile(),
+                              ),
                             );
                           },
-                          child: Text("Edit Profile ", style: TextStyle(
-                            fontSize: MediaQuery.of(context).size.width/25,
-                          ),)),
-                     Icon(Icons.arrow_forward_ios,size: 15.0,),
+                          child: Text(
+                            "Edit Profile ",
+                            style: TextStyle(
+                              fontSize: MediaQuery.of(context).size.width / 25,
+                            ),
+                          )),
+                      Icon(
+                        Icons.arrow_forward_ios,
+                        size: 15.0,
+                      ),
                     ],
                   ),
                 ),
@@ -63,23 +79,22 @@ class _profileState extends State<profile> {
                     width: 200,
                     height: 40,
                     decoration: BoxDecoration(
-                      color: Color(0xffFFCD32),
-                      borderRadius: BorderRadius.circular(10)
-                    ),
+                        color: Color(0xffFFCD32),
+                        borderRadius: BorderRadius.circular(10)),
                     child: Row(
                       children: [
                         Image.asset("assets/images/img_24.png"),
-                        Text("Link my Child",style: TextStyle(
-                            fontSize: MediaQuery.of(context).size.width/25,
-                            color: Colors.white),)
+                        Text(
+                          "Link my Child",
+                          style: TextStyle(
+                              fontSize: MediaQuery.of(context).size.width / 25,
+                              color: Colors.white),
+                        )
                       ],
                     ),
                   ),
                 ),
-
-
               ],
-
             ),
           ),
           Column(
@@ -87,106 +102,128 @@ class _profileState extends State<profile> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 10,bottom: 10,top: 20),
-                child: Text("My Account",style: GoogleFonts.poppins(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: MediaQuery.of(context).size.width/20,
-                ),),
+                padding: const EdgeInsets.only(left: 10, bottom: 10, top: 20),
+                child: Text(
+                  "My Account",
+                  style: GoogleFonts.poppins(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: MediaQuery.of(context).size.width / 20,
+                  ),
+                ),
               ),
-             Padding(
-               padding: const EdgeInsets.only(top: 20,right: 10,left: 10),
-               child: Row(
-                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                 children: [
-                   Text("My Child", style: TextStyle(
-                     fontSize: MediaQuery.of(context).size.width/25,
-                   ),),
-                   Icon(Icons.arrow_forward_ios)
-                 ],
-               ),
-             ),
-             Padding(
-               padding: const EdgeInsets.only(top: 20,right: 10,left: 10),
-               child: InkWell(
-                 child: Row(
-                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                   children: [
-                     Text("Notifications", style: TextStyle(
-    fontSize: MediaQuery.of(context).size.width/25,
-    color: Colors.black),),
-                     Icon(Icons.arrow_forward_ios)
-                   ],
-                 ),
-                 onTap: (){
-                   Navigator.push(context, MaterialPageRoute(builder: (context)=>notfication()));
-                 },
-               ),
-             ),
-             Padding(
-               padding: const EdgeInsets.only(top: 20,right: 10,left: 10),
-               child: Row(
-                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                 children: [
-                   Text("Favourite Teachers", style: TextStyle(
-                   fontSize: MediaQuery.of(context).size.width/25,
-                   color: Colors.black),),
-                   Icon(Icons.arrow_forward_ios)
-                 ],
-               ),
-             ),
-             Padding(
-               padding: const EdgeInsets.only(top: 20,right: 10,left: 10),
-               child: InkWell(
-                 onTap: (){
-                   Navigator.push(context, MaterialPageRoute(builder: (context)=>paymentmethode()));
-                 },
-                 child: Row(
-                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                   children: [
-                     Text("Payment Methode", style: TextStyle(
-    fontSize: MediaQuery.of(context).size.width/25,
-    color: Colors.black),),
-                     Icon(Icons.arrow_forward_ios)
-                   ],
-                 ),
-               ),
-             ),
-             Padding(
-               padding: const EdgeInsets.only(top: 20,right: 10,left: 10),
-               child: InkWell(
-                 onTap: (){
-                   Navigator.push(context, MaterialPageRoute(builder: (context)=>history1()));
-                 },
-                 child: Row(
-                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                   children: [
-                     Text("Booking History", style: TextStyle(
-    fontSize: MediaQuery.of(context).size.width/25,
-    color: Colors.black),),
-                     Icon(Icons.arrow_forward_ios)
-                   ],
-                 ),
-               ),
-             ),
               Padding(
-                padding: const EdgeInsets.only(left: 20,right: 20,top: 100,bottom: 50),
+                padding: const EdgeInsets.only(top: 20, right: 10, left: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "My Child",
+                      style: TextStyle(
+                        fontSize: MediaQuery.of(context).size.width / 25,
+                      ),
+                    ),
+                    Icon(Icons.arrow_forward_ios)
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 20, right: 10, left: 10),
                 child: InkWell(
-                  onTap: (){
-
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Notifications",
+                        style: TextStyle(
+                            fontSize: MediaQuery.of(context).size.width / 25,
+                            color: Colors.black),
+                      ),
+                      Icon(Icons.arrow_forward_ios)
+                    ],
+                  ),
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => notfication()));
                   },
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 20, right: 10, left: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Favourite Teachers",
+                      style: TextStyle(
+                          fontSize: MediaQuery.of(context).size.width / 25,
+                          color: Colors.black),
+                    ),
+                    Icon(Icons.arrow_forward_ios)
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 20, right: 10, left: 10),
+                child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => paymentmethode()));
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Payment Methode",
+                        style: TextStyle(
+                            fontSize: MediaQuery.of(context).size.width / 25,
+                            color: Colors.black),
+                      ),
+                      Icon(Icons.arrow_forward_ios)
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 20, right: 10, left: 10),
+                child: InkWell(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => history1()));
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Booking History",
+                        style: TextStyle(
+                            fontSize: MediaQuery.of(context).size.width / 25,
+                            color: Colors.black),
+                      ),
+                      Icon(Icons.arrow_forward_ios)
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 20, right: 20, top: 100, bottom: 50),
+                child: InkWell(
+                  onTap: () {},
                   child: Container(
-                    width:MediaQuery.of(context).size.width,
-
+                    width: MediaQuery.of(context).size.width,
                     height: 60,
                     decoration: BoxDecoration(
                         color: Color(0xffFFCD32),
-                        borderRadius: BorderRadius.circular(10)
-                    ),
-                    child: Center(child: Text("Logout",style: GoogleFonts.almarai(
-                        color: Colors.white,
-                        fontSize: 17
-                    ),)),
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Center(
+                        child: Text(
+                      "Logout",
+                      style: GoogleFonts.almarai(
+                          color: Colors.white, fontSize: 17),
+                    )),
                   ),
                 ),
               ),

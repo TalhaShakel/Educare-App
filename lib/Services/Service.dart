@@ -16,16 +16,31 @@ firestore_set(collection, doc, set) async {
           .add(set);
 }
 
-firestore_Sec_set(collection, secCollection, doc, set) async {
-  doc != null
-      ? await FirebaseFirestore.instance
-          .collection(collection.toString())
-          .doc(doc.toString())
-          .collection(secCollection)
-          .set(set)
-      : await FirebaseFirestore.instance
-          .collection(collection.toString())
-          .add(set);
+firestore_Sec_set(collection, secCollection, doc, doc2, data,
+    {bool update = false}) async {
+  if (update == true) {
+    print("using Update function");
+    var dat = FirebaseFirestore.instance
+        .collection("$collection")
+        .doc("$doc")
+        .collection("$secCollection")
+        .doc("$doc2")
+        .update(data);
+    return dat;
+  } else
+    doc2 != null
+        ? await FirebaseFirestore.instance
+            .collection(collection.toString())
+            .doc(doc.toString())
+            .collection(secCollection)
+            .doc(doc2)
+            .set(data)
+        : await FirebaseFirestore.instance
+            .collection(collection.toString())
+            .doc(doc.toString())
+            .collection(secCollection)
+            .doc()
+            .set(data);
 }
 
 firestore_update(collection, doc, data) {
