@@ -141,10 +141,92 @@ class ParentsData {
     return {
       "child": {},
       "uid": uid,
-      "usertype":"parent",
+      "usertype": "parent",
       "fullName": fullName,
       "address": address,
       "search": search,
+      "profilePic":
+          "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"
+    };
+  }
+}
+
+class StudentData {
+  Map? child;
+
+  String? fullName, age, search, uid, profilePic;
+  StudentData(
+      {this.child,
+      this.fullName,
+      this.age,
+      this.search,
+      this.uid,
+      this.profilePic});
+  StudentData.fromMap(map) {
+    child = map["child"];
+    fullName = map["fullName"];
+    age = map["age"];
+    search = map["search"];
+    uid = map["uid"];
+    profilePic = map["profilePic"];
+  }
+  Map<String, dynamic> toMap() {
+    return {
+      "child": {},
+      "uid": uid,
+      "usertype": "student",
+      "fullName": fullName,
+      "age": age,
+      "search": search,
+      "profilePic":
+          "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"
+    };
+  }
+}
+
+class TutorData {
+  Map? child;
+
+  String? fullName,
+      experience,
+      teaching,
+      teaching2,
+      experience2,
+      major,
+      uid,
+      profilePic;
+  TutorData(
+      {this.child,
+      this.major,
+      this.fullName,
+      this.experience,
+      this.teaching,
+      this.experience2,
+      this.teaching2,
+      this.uid,
+      this.profilePic});
+  TutorData.fromMap(map) {
+    child = map["child"];
+    major = map["major"];
+    fullName = map["fullName"];
+    experience = map["experience"];
+    teaching = map["teaching"];
+    experience2 = map["experience2"];
+    teaching2 = map["teaching2"];
+    uid = map["uid"];
+    profilePic = map["profilePic"];
+  }
+  Map<String, dynamic> toMap() {
+    return {
+      "child": {},
+      "uid": uid,
+      "major": "$major",
+      "usertype": "tutor",
+      "fullName": "$fullName",
+      "experience": "$experience",
+      "teaching": "$teaching",
+      "experience2": "$experience2",
+      "teaching2": "$teaching2",
       "profilePic":
           "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png"
     };
